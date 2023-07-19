@@ -8,4 +8,16 @@
 import Foundation
 
 class RickAndMortyApi {
+    
+    struct ResponseInfo<Element: Decodable>: Decodable {
+        let info: Info
+        let results: [Element]
+        
+        struct Info: Decodable {
+            let count: Int
+            let pages: Int
+            let next: String?
+            let prev: String?
+        }
+    }
 }
