@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CharactersView: View {
+    
+    @StateObject private var viewModel = CharactersViewModel()
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
