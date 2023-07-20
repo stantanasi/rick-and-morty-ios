@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CharacterView: View {
     
+    @StateObject private var viewModel = CharacterViewModel()
     private var id: Int
     
     init(id: Int) {
@@ -16,7 +17,12 @@ struct CharacterView: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+        }
+        .navigationTitle(viewModel.character?.name ?? "Loading...")
+        .task {
+            await viewModel.getCharacter(id: self.id)
+        }
     }
 }
 
