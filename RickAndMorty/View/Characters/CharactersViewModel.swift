@@ -8,4 +8,14 @@
 import Foundation
 
 class CharactersViewModel: ObservableObject {
+    
+    private let rickAndMortyApi = RickAndMortyApi()
+    @Published public var characters: [Character] = []
+    
+    func getCharacters() async {
+        let response = try! await rickAndMortyApi.getAllCharacters()
+        DispatchQueue.main.async {
+            self.characters.append(contentsOf: response.results)
+        }
+    }
 }
