@@ -10,7 +10,7 @@ import Foundation
 struct Character: Decodable, Identifiable {
     let id: Int
     let name: String
-    let status: String
+    let status: Status
     let species: String
     let type: String
     let gender: String
@@ -20,6 +20,12 @@ struct Character: Decodable, Identifiable {
     let episode: [String]
     let url: String
     let created: String
+    
+    enum Status: String, Decodable {
+        case Alive
+        case Dead
+        case unknown
+    }
 
     struct Origin: Decodable {
         let name: String
