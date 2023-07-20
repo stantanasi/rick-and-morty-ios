@@ -13,7 +13,7 @@ struct Character: Decodable, Identifiable {
     let status: Status
     let species: String
     let type: String
-    let gender: String
+    let gender: Gender
     let origin: Origin
     let location: Location
     let image: String
@@ -24,6 +24,13 @@ struct Character: Decodable, Identifiable {
     enum Status: String, Decodable {
         case Alive
         case Dead
+        case unknown
+    }
+    
+    enum Gender: String, Decodable {
+        case Female
+        case Male
+        case Genderless
         case unknown
     }
 
