@@ -14,7 +14,12 @@ struct CharactersView: View {
     var body: some View {
         NavigationView {
             List(viewModel.characters) { character in
-                Text(character.name)
+                NavigationLink(
+                    destination: CharacterView(id: character.id),
+                    label: {
+                        Text(character.name)
+                    }
+                )
             }
             .navigationTitle("Characters")
             .task {
