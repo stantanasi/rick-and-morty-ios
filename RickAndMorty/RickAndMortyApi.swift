@@ -9,6 +9,9 @@ import Foundation
 
 class RickAndMortyApi {
     
+    let baseUrl = "https://rickandmortyapi.com/api"
+    
+    
     struct ResponseInfo<Element: Decodable>: Decodable {
         let info: Info
         let results: [Element]
