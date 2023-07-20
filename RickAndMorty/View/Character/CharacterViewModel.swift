@@ -8,4 +8,14 @@
 import Foundation
 
 class CharacterViewModel: ObservableObject {
+    
+    private let rickAndMortyApi = RickAndMortyApi()
+    @Published public var character: Character?
+    
+    func getCharacter(id: Int) async {
+        let response = try! await rickAndMortyApi.getSingleCharacter(id: id)
+        DispatchQueue.main.async {
+            self.character = response
+        }
+    }
 }
