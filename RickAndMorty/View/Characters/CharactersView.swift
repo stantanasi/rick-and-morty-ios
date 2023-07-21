@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CharactersView: View {
     
-    @StateObject private var viewModel = CharactersViewModel()
+    @ObservedObject private var viewModel = CharactersViewModel()
     
     var body: some View {
         NavigationView {

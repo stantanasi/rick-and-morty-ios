@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CharacterView: View {
     
-    @StateObject private var viewModel = CharacterViewModel()
+    @ObservedObject private var viewModel = CharacterViewModel()
     private var id: Int
     
     init(id: Int) {
