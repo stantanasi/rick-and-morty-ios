@@ -13,13 +13,15 @@ struct CharactersView: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.characters) { character in
-                NavigationLink(
-                    destination: CharacterView(id: character.id),
-                    label: {
-                        Text(character.name)
-                    }
-                )
+            List {
+                ForEach(viewModel.characters, id: \.id) { character in
+                    NavigationLink(
+                        destination: CharacterView(id: character.id),
+                        label: {
+                            Text(character.name)
+                        }
+                    )
+                }
             }
             .navigationTitle("Characters")
             .listStyle(GroupedListStyle())
