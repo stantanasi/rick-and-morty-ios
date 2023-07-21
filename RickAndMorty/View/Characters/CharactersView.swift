@@ -22,6 +22,20 @@ struct CharactersView: View {
                         }
                     )
                 }
+                
+                if !viewModel.characters.isEmpty && viewModel.currentPage < viewModel.totalPages {
+                    HStack {
+                        Spacer()
+                        VStack {
+                            ProgressView()
+                            Text("Loading next page...")
+                        }
+                        Spacer()
+                    }
+                    .onAppear {
+                        viewModel.getCharacters(page: viewModel.currentPage + 1)
+                    }
+                }
             }
             .navigationTitle("Characters")
             .listStyle(GroupedListStyle())
