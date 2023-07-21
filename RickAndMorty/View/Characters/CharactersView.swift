@@ -22,6 +22,7 @@ struct CharactersView: View {
                 )
             }
             .navigationTitle("Characters")
+            .listStyle(GroupedListStyle())
             .task {
                 await viewModel.getCharacters()
             }
