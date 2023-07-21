@@ -9,11 +9,10 @@ import SwiftUI
 
 struct CharacterView: View {
     
-    @ObservedObject private var viewModel = CharacterViewModel()
-    private var id: Int
+    @ObservedObject private var viewModel: CharacterViewModel
     
     init(id: Int) {
-        self.id = id
+        viewModel = CharacterViewModel(id: id)
     }
     
     var body: some View {
@@ -36,9 +35,6 @@ struct CharacterView: View {
         }
         .navigationTitle(viewModel.character?.name ?? "Loading...")
         .listStyle(GroupedListStyle())
-        .task {
-            await viewModel.getCharacter(id: self.id)
-        }
     }
     
     private func infoSection(_ character: Character) -> some View {

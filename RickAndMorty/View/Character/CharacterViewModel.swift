@@ -12,10 +12,16 @@ class CharacterViewModel: ObservableObject {
     private let rickAndMortyApi = RickAndMortyApi()
     @Published public var character: Character?
     
-    func getCharacter(id: Int) async {
-        let response = try! await rickAndMortyApi.getSingleCharacter(id: id)
-        DispatchQueue.main.async {
-            self.character = response
+    init(id: Int) {
+        getCharacter(id: id)
+    }
+    
+    func getCharacter(id: Int) {
+        Task {
+            let response = try! await rickAndMortyApi.getSingleCharacter(id: id)
+            DispatchQueue.main.async {
+                self.character = response
+            }
         }
     }
 }
