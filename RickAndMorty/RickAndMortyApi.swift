@@ -12,8 +12,10 @@ class RickAndMortyApi {
     let baseUrl = "https://rickandmortyapi.com/api"
     
     
-    func getAllCharacters() async throws -> ResponseInfo<Character> {
-        let url = URL(string: "\(baseUrl)/character")!
+    func getAllCharacters(page: Int = 1) async throws -> ResponseInfo<Character> {
+        let url = URL(string: "\(baseUrl)/character")!.appending(queryItems: [
+            URLQueryItem(name: "page", value: String(page))
+        ])
         
         let (data, _) = try await URLSession.shared.data(from: url)
         
@@ -47,7 +49,8 @@ class RickAndMortyApi {
         status: Character.Status? = nil,
         species: String? = nil,
         type: String? = nil,
-        gender: Character.Gender? = nil
+        gender: Character.Gender? = nil,
+        page: Int = 1
     ) async throws -> ResponseInfo<Character> {
         let url = URL(string: "\(baseUrl)/character")!.appending(queryItems: [
             URLQueryItem(name: "name", value: name),
@@ -55,6 +58,7 @@ class RickAndMortyApi {
             URLQueryItem(name: "species", value: species),
             URLQueryItem(name: "type", value: type),
             URLQueryItem(name: "gender", value: gender?.rawValue.lowercased()),
+            URLQueryItem(name: "page", value: String(page)),
         ].filter { $0.value != nil })
         
         let (data, _) = try await URLSession.shared.data(from: url)
