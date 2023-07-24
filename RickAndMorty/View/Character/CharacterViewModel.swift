@@ -10,11 +10,13 @@ import Foundation
 class CharacterViewModel: ObservableObject {
     
     private let rickAndMortyApi = RickAndMortyApi()
+    
     @Published public var character: Character?
     
     init(id: Int) {
         getCharacter(id: id)
     }
+    
     
     func getCharacter(id: Int) {
         Task {
