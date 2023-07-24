@@ -122,6 +122,19 @@ class RickAndMortyApi {
     }
     
     
+    func getAllEpisodes(page: Int = 1) async throws -> ResponseInfo<Episode> {
+        let url = URL(string: "\(baseUrl)/episode")!.appending(queryItems: [
+            URLQueryItem(name: "page", value: String(page))
+        ])
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoded = try JSONDecoder().decode(ResponseInfo<Episode>.self, from: data)
+        
+        return decoded
+    }
+    
+    
     struct ResponseInfo<Element: Decodable>: Decodable {
         let info: Info
         let results: [Element]
