@@ -154,6 +154,24 @@ class RickAndMortyApi {
         return decoded
     }
     
+    func filterEpisodes(
+        name: String? = nil,
+        episode: String? = nil,
+        page: Int = 1
+    ) async throws -> ResponseInfo<Episode> {
+        let url = URL(string: "\(baseUrl)/episode")!.appending(queryItems: [
+            URLQueryItem(name: "name", value: name),
+            URLQueryItem(name: "episode", value: episode),
+            URLQueryItem(name: "page", value: String(page)),
+        ].filter { $0.value != nil })
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoded = try JSONDecoder().decode(ResponseInfo<Episode>.self, from: data)
+        
+        return decoded
+    }
+    
     
     struct ResponseInfo<Element: Decodable>: Decodable {
         let info: Info
