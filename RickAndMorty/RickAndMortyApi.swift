@@ -69,6 +69,19 @@ class RickAndMortyApi {
     }
     
     
+    func getAllLocations(page: Int = 1) async throws -> ResponseInfo<Location> {
+        let url = URL(string: "\(baseUrl)/location")!.appending(queryItems: [
+            URLQueryItem(name: "page", value: String(page))
+        ])
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoded = try JSONDecoder().decode(ResponseInfo<Location>.self, from: data)
+        
+        return decoded
+    }
+    
+    
     struct ResponseInfo<Element: Decodable>: Decodable {
         let info: Info
         let results: [Element]
