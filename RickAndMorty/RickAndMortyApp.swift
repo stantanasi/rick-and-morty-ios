@@ -16,6 +16,10 @@ struct RickAndMortyApp: App {
                     .tabItem {
                         Label("Characters", systemImage: "person.crop.square.fill.and.at.rectangle")
                     }
+                EpisodesView()
+                    .tabItem {
+                        Label("Episodes", systemImage: "tv")
+                    }
             }
         }
     }
