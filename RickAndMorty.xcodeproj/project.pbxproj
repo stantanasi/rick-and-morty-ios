@@ -15,6 +15,7 @@
 		5C3EC56F2A69731C00C9CAE0 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3EC56E2A69731C00C9CAE0 /* CharacterView.swift */; };
 		5C3EC5712A69738800C9CAE0 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3EC5702A69738800C9CAE0 /* CharacterViewModel.swift */; };
 		5C6236FE2A6EBF3800399FEA /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6236FD2A6EBF3800399FEA /* Location.swift */; };
+		5C6237002A6EC1D400399FEA /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6236FF2A6EC1D400399FEA /* Episode.swift */; };
 		5C862AEA2A695F2C005722B3 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C862AE92A695F2C005722B3 /* CharactersView.swift */; };
 		5C862AEC2A6961D0005722B3 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C862AEB2A6961D0005722B3 /* CharactersViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		5C3EC56E2A69731C00C9CAE0 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		5C3EC5702A69738800C9CAE0 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		5C6236FD2A6EBF3800399FEA /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		5C6236FF2A6EC1D400399FEA /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		5C862AE92A695F2C005722B3 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		5C862AEB2A6961D0005722B3 /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 			children = (
 				5C3C514F2A5ECCB900A0E9DA /* Character.swift */,
 				5C6236FD2A6EBF3800399FEA /* Location.swift */,
+				5C6236FF2A6EC1D400399FEA /* Episode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				5C862AEA2A695F2C005722B3 /* CharactersView.swift in Sources */,
 				5C3C51532A5ED3E700A0E9DA /* RickAndMortyApi.swift in Sources */,
 				5C3C513D2A5C527F00A0E9DA /* RickAndMortyApp.swift in Sources */,
+				5C6237002A6EC1D400399FEA /* Episode.swift in Sources */,
 				5C862AEC2A6961D0005722B3 /* CharactersViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
