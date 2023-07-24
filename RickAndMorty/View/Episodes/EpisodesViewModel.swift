@@ -12,6 +12,8 @@ class EpisodesViewModel: ObservableObject {
     private let rickAndMortyApi = RickAndMortyApi()
     
     @Published public var episodes: [Episode] = []
+    public var currentPage = 1
+    public var totalPages = 0
     
     init() {
         getEpisodes()
@@ -23,6 +25,8 @@ class EpisodesViewModel: ObservableObject {
             let response = try! await rickAndMortyApi.getAllEpisodes(page: page)
             DispatchQueue.main.async {
                 self.episodes.append(contentsOf: response.results)
+                self.currentPage = page
+                self.totalPages = response.info.pages
             }
         }
     }

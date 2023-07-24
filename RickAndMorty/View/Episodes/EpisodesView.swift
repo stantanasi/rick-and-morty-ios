@@ -17,6 +17,20 @@ struct EpisodesView: View {
                 ForEach(viewModel.episodes, id: \.id) { episode in
                     Text(episode.name)
                 }
+                
+                if !viewModel.episodes.isEmpty && viewModel.currentPage < viewModel.totalPages {
+                    HStack {
+                        Spacer()
+                        VStack {
+                            ProgressView()
+                            Text("Loading next page...")
+                        }
+                        Spacer()
+                    }
+                    .onAppear {
+                        viewModel.getEpisodes(page: viewModel.currentPage + 1)
+                    }
+                }
             }
             .navigationTitle("Episodes")
             .listStyle(GroupedListStyle())
