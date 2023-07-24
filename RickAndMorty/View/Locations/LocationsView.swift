@@ -15,6 +15,7 @@ struct LocationsView: View {
         NavigationView {
             List {
                 ForEach(viewModel.locations, id: \.id) { location in
+                    Text(location.name)
                 }
             }
             .navigationTitle("Locations")
