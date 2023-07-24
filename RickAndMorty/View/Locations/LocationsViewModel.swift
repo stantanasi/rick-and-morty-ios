@@ -12,6 +12,8 @@ class LocationsViewModel: ObservableObject {
     private let rickAndMortyApi = RickAndMortyApi()
     
     @Published public var locations: [Location] = []
+    public var currentPage = 1
+    public var totalPages = 0
     
     init() {
         getLocations()
@@ -23,6 +25,8 @@ class LocationsViewModel: ObservableObject {
             let response = try! await rickAndMortyApi.getAllLocations(page: page)
             DispatchQueue.main.async {
                 self.locations.append(contentsOf: response.results)
+                self.currentPage = page
+                self.totalPages = response.info.pages
             }
         }
     }
