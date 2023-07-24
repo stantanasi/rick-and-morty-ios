@@ -15,6 +15,7 @@ struct EpisodesView: View {
         NavigationView {
             List {
                 ForEach(viewModel.episodes, id: \.id) { episode in
+                    Text(episode.name)
                 }
             }
             .navigationTitle("Episodes")
