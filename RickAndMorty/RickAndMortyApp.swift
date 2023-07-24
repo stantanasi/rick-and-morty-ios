@@ -11,7 +11,12 @@ import SwiftUI
 struct RickAndMortyApp: App {
     var body: some Scene {
         WindowGroup {
-            CharactersView()
+            TabView {
+                CharactersView()
+                    .tabItem {
+                        Label("Characters", systemImage: "person.crop.square.fill.and.at.rectangle")
+                    }
+            }
         }
     }
 }
