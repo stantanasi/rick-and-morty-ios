@@ -69,6 +69,59 @@ class RickAndMortyApi {
     }
     
     
+    func getAllLocations(page: Int = 1) async throws -> ResponseInfo<Location> {
+        let url = URL(string: "\(baseUrl)/location")!.appending(queryItems: [
+            URLQueryItem(name: "page", value: String(page))
+        ])
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoded = try JSONDecoder().decode(ResponseInfo<Location>.self, from: data)
+        
+        return decoded
+    }
+    
+    func getSingleLocation(id: Int) async throws -> Location {
+        let url = URL(string: "\(baseUrl)/location/\(id)")!
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoded = try JSONDecoder().decode(Location.self, from: data)
+        
+        return decoded
+    }
+    
+    func getMultipleLocations(ids: Int...) async throws -> [Location] {
+        let url = URL(string: "\(baseUrl)/location/\(ids.map { String($0) }.joined(separator: ","))")!
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoded = try JSONDecoder().decode([Location].self, from: data)
+        
+        return decoded
+    }
+    
+    func filterLocations(
+        name: String? = nil,
+        type: String? = nil,
+        dimension: String? = nil,
+        page: Int = 1
+    ) async throws -> ResponseInfo<Location> {
+        let url = URL(string: "\(baseUrl)/character")!.appending(queryItems: [
+            URLQueryItem(name: "name", value: name),
+            URLQueryItem(name: "type", value: type),
+            URLQueryItem(name: "dimension", value: dimension),
+            URLQueryItem(name: "page", value: String(page)),
+        ].filter { $0.value != nil })
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoded = try JSONDecoder().decode(ResponseInfo<Location>.self, from: data)
+        
+        return decoded
+    }
+    
+    
     struct ResponseInfo<Element: Decodable>: Decodable {
         let info: Info
         let results: [Element]
