@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct EpisodesView: View {
+    
+    @ObservedObject private var viewModel = EpisodesViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                ForEach(viewModel.episodes, id: \.id) { episode in
+                }
+            }
+            .navigationTitle("Episodes")
+            .listStyle(GroupedListStyle())
+        }
     }
 }
 
