@@ -20,6 +20,10 @@ struct RickAndMortyApp: App {
                     .tabItem {
                         Label("Episodes", systemImage: "tv")
                     }
+                LocationsView()
+                    .tabItem {
+                        Label("Locations", systemImage: "map")
+                    }
             }
         }
     }
