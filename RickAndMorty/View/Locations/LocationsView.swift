@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct LocationsView: View {
+    
+    @ObservedObject private var viewModel = LocationsViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                ForEach(viewModel.locations, id: \.id) { location in
+                }
+            }
+            .navigationTitle("Locations")
+            .listStyle(GroupedListStyle())
+        }
     }
 }
 
