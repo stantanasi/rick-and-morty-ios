@@ -9,7 +9,10 @@ import SwiftUI
 
 struct LocationView: View {
     
+    @ObservedObject private var viewModel: LocationViewModel
+    
     init(id: Int) {
+        viewModel = LocationViewModel(id: id)
     }
     
     var body: some View {
