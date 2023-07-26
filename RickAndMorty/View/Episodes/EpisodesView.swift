@@ -15,7 +15,12 @@ struct EpisodesView: View {
         NavigationView {
             List {
                 ForEach(viewModel.episodes, id: \.id) { episode in
-                    Text(episode.name)
+                    NavigationLink(
+                        destination: EpisodeView(id: episode.id),
+                        label: {
+                            Text(episode.name)
+                        }
+                    )
                 }
                 
                 if !viewModel.episodes.isEmpty && viewModel.currentPage < viewModel.totalPages {

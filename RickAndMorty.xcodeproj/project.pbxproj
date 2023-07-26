@@ -20,6 +20,8 @@
 		5C6237052A6EC64F00399FEA /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6237042A6EC64F00399FEA /* EpisodesViewModel.swift */; };
 		5C6237082A6ECC7A00399FEA /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6237072A6ECC7A00399FEA /* LocationsView.swift */; };
 		5C62370A2A6ECCB000399FEA /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6237092A6ECCB000399FEA /* LocationsViewModel.swift */; };
+		5C62370F2A7154D600399FEA /* EpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C62370E2A7154D600399FEA /* EpisodeView.swift */; };
+		5C6D39EC2A71554000E9DE60 /* EpisodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6D39EB2A71554000E9DE60 /* EpisodeViewModel.swift */; };
 		5C862AEA2A695F2C005722B3 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C862AE92A695F2C005722B3 /* CharactersView.swift */; };
 		5C862AEC2A6961D0005722B3 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C862AEB2A6961D0005722B3 /* CharactersViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,8 @@
 		5C6237042A6EC64F00399FEA /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
 		5C6237072A6ECC7A00399FEA /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 		5C6237092A6ECCB000399FEA /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
+		5C62370E2A7154D600399FEA /* EpisodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeView.swift; sourceTree = "<group>"; };
+		5C6D39EB2A71554000E9DE60 /* EpisodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewModel.swift; sourceTree = "<group>"; };
 		5C862AE92A695F2C005722B3 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		5C862AEB2A6961D0005722B3 /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,9 +134,19 @@
 			path = Locations;
 			sourceTree = "<group>";
 		};
+		5C62370D2A7154BF00399FEA /* Episode */ = {
+			isa = PBXGroup;
+			children = (
+				5C62370E2A7154D600399FEA /* EpisodeView.swift */,
+				5C6D39EB2A71554000E9DE60 /* EpisodeViewModel.swift */,
+			);
+			path = Episode;
+			sourceTree = "<group>";
+		};
 		5C862AE72A695E68005722B3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C62370D2A7154BF00399FEA /* Episode */,
 				5C6237062A6ECC6600399FEA /* Locations */,
 				5C6237012A6EC5F900399FEA /* Episodes */,
 				5C3EC56D2A69730900C9CAE0 /* Character */,
@@ -232,6 +246,8 @@
 				5C3C513D2A5C527F00A0E9DA /* RickAndMortyApp.swift in Sources */,
 				5C6237082A6ECC7A00399FEA /* LocationsView.swift in Sources */,
 				5C6237002A6EC1D400399FEA /* Episode.swift in Sources */,
+				5C62370F2A7154D600399FEA /* EpisodeView.swift in Sources */,
+				5C6D39EC2A71554000E9DE60 /* EpisodeViewModel.swift in Sources */,
 				5C862AEC2A6961D0005722B3 /* CharactersViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
