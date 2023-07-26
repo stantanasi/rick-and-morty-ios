@@ -15,7 +15,12 @@ struct LocationsView: View {
         NavigationView {
             List {
                 ForEach(viewModel.locations, id: \.id) { location in
-                    Text(location.name)
+                    NavigationLink(
+                        destination: LocationView(id: location.id),
+                        label: {
+                            Text(location.name)
+                        }
+                    )
                 }
                 
                 if !viewModel.locations.isEmpty && viewModel.currentPage < viewModel.totalPages {

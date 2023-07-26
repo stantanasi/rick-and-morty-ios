@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct LocationView: View {
+    
+    init(id: Int) {
+    }
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
@@ -15,6 +19,6 @@ struct LocationView: View {
 
 struct LocationView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationView()
+        LocationView(id: 1)
     }
 }
