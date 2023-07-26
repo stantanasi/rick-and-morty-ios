@@ -9,12 +9,16 @@ import SwiftUI
 
 struct CharactersView: View {
     
-    @ObservedObject private var viewModel = CharactersViewModel()
+    private let rickAndMortyApi = RickAndMortyApi()
+    
+    @State private var characters: [Character] = []
+    @State private var currentPage = 1
+    @State private var totalPages = 0
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.characters, id: \.id) { character in
+                ForEach(characters, id: \.id) { character in
                     NavigationLink(
                         destination: CharacterView(id: character.id),
                         label: {
@@ -23,7 +27,7 @@ struct CharactersView: View {
                     )
                 }
                 
-                if !viewModel.characters.isEmpty && viewModel.currentPage < viewModel.totalPages {
+                if !characters.isEmpty && currentPage < totalPages {
                     HStack {
                         Spacer()
                         VStack {
@@ -32,13 +36,21 @@ struct CharactersView: View {
                         }
                         Spacer()
                     }
-                    .onAppear {
-                        viewModel.getCharacters(page: viewModel.currentPage + 1)
+                    .task {
+                        let response = try! await rickAndMortyApi.getAllCharacters(page: currentPage + 1)
+                        self.characters.append(contentsOf: response.results)
+                        self.currentPage = currentPage + 1
+                        self.totalPages = response.info.pages
                     }
                 }
             }
             .navigationTitle("Characters")
             .listStyle(GroupedListStyle())
+            .task {
+                let response = try! await rickAndMortyApi.getAllCharacters()
+                self.characters = response.results
+                self.totalPages = response.info.pages
+            }
         }
     }
 }
