@@ -16,7 +16,42 @@ struct EpisodeView: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            if let episode = viewModel.episode {
+                infoSection(episode)
+            }
+        }
+        .listStyle(GroupedListStyle())
+    }
+    
+    
+    private func infoSection(_ episode: Episode) -> some View {
+        Section(
+            header: Text("Info"),
+            content: {
+                HStack {
+                    Text("Name")
+                    Spacer()
+                    Text(episode.name)
+                        .foregroundColor(.accentColor)
+                        .fontWeight(.semibold)
+                }
+                HStack {
+                    Text("Air date")
+                    Spacer()
+                    Text(episode.air_date)
+                        .foregroundColor(.accentColor)
+                        .fontWeight(.semibold)
+                }
+                HStack {
+                    Text("Code")
+                    Spacer()
+                    Text(episode.episode)
+                        .foregroundColor(.accentColor)
+                        .fontWeight(.semibold)
+                }
+            }
+        )
     }
 }
 
