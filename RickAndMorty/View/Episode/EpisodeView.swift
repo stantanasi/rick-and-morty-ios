@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct EpisodeView: View {
+    
+    init(id: Int) {
+    }
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
@@ -15,6 +19,6 @@ struct EpisodeView: View {
 
 struct EpisodeView_Previews: PreviewProvider {
     static var previews: some View {
-        EpisodeView()
+        EpisodeView(id: 1)
     }
 }
