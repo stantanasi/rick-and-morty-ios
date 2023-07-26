@@ -21,6 +21,7 @@ struct EpisodeView: View {
                 infoSection(episode)
             }
         }
+        .navigationTitle(viewModel.episode?.name ?? "Loading...")
         .listStyle(GroupedListStyle())
     }
     
@@ -29,13 +30,6 @@ struct EpisodeView: View {
         Section(
             header: Text("Info"),
             content: {
-                HStack {
-                    Text("Name")
-                    Spacer()
-                    Text(episode.name)
-                        .foregroundColor(.accentColor)
-                        .fontWeight(.semibold)
-                }
                 HStack {
                     Text("Air date")
                     Spacer()
