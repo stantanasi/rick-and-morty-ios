@@ -16,7 +16,35 @@ struct LocationView: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            if let location = viewModel.location {
+                infoSection(location)
+            }
+        }
+        .listStyle(GroupedListStyle())
+    }
+    
+    
+    private func infoSection(_ location: Location) -> some View {
+        Section(
+            header: Text("Info"),
+            content: {
+                HStack {
+                    Text("Type")
+                    Spacer()
+                    Text(location.type)
+                        .foregroundColor(.accentColor)
+                        .fontWeight(.semibold)
+                }
+                HStack {
+                    Text("Dimension")
+                    Spacer()
+                    Text(location.dimension)
+                        .foregroundColor(.accentColor)
+                        .fontWeight(.semibold)
+                }
+            }
+        )
     }
 }
 
