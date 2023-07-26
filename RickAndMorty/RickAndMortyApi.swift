@@ -34,7 +34,7 @@ class RickAndMortyApi {
         return decoded
     }
     
-    func getMultipleCharacters(ids: Int...) async throws -> [Character] {
+    func getMultipleCharacters(ids: [Int]) async throws -> [Character] {
         let url = URL(string: "\(baseUrl)/character/\(ids.map { String($0) }.joined(separator: ","))")!
         
         let (data, _) = try await URLSession.shared.data(from: url)
@@ -91,7 +91,7 @@ class RickAndMortyApi {
         return decoded
     }
     
-    func getMultipleLocations(ids: Int...) async throws -> [Location] {
+    func getMultipleLocations(ids: [Int]) async throws -> [Location] {
         let url = URL(string: "\(baseUrl)/location/\(ids.map { String($0) }.joined(separator: ","))")!
         
         let (data, _) = try await URLSession.shared.data(from: url)
@@ -144,7 +144,7 @@ class RickAndMortyApi {
         return decoded
     }
     
-    func getMultipleEpisodes(ids: Int...) async throws -> [Episode] {
+    func getMultipleEpisodes(ids: [Int]) async throws -> [Episode] {
         let url = URL(string: "\(baseUrl)/episode/\(ids.map { String($0) }.joined(separator: ","))")!
         
         let (data, _) = try await URLSession.shared.data(from: url)
