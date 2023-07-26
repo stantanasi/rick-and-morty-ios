@@ -21,6 +21,7 @@ struct LocationView: View {
                 infoSection(location)
             }
         }
+        .navigationTitle(viewModel.location?.name ?? "Loading...")
         .listStyle(GroupedListStyle())
     }
     
