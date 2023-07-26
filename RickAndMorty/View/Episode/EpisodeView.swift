@@ -9,7 +9,10 @@ import SwiftUI
 
 struct EpisodeView: View {
     
+    @ObservedObject private var viewModel: EpisodeViewModel
+    
     init(id: Int) {
+        viewModel = EpisodeViewModel(id: id)
     }
     
     var body: some View {
