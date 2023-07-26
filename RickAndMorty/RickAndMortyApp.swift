@@ -16,13 +16,13 @@ struct RickAndMortyApp: App {
                     .tabItem {
                         Label("Characters", systemImage: "person.crop.square.fill.and.at.rectangle")
                     }
-                EpisodesView()
-                    .tabItem {
-                        Label("Episodes", systemImage: "tv")
-                    }
                 LocationsView()
                     .tabItem {
                         Label("Locations", systemImage: "map")
+                    }
+                EpisodesView()
+                    .tabItem {
+                        Label("Episodes", systemImage: "tv")
                     }
             }
         }
