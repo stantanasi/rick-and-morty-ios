@@ -13,7 +13,6 @@
 		5C3C51502A5ECCB900A0E9DA /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C514F2A5ECCB900A0E9DA /* Character.swift */; };
 		5C3C51532A5ED3E700A0E9DA /* RickAndMortyApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C51522A5ED3E700A0E9DA /* RickAndMortyApi.swift */; };
 		5C3EC56F2A69731C00C9CAE0 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3EC56E2A69731C00C9CAE0 /* CharacterView.swift */; };
-		5C3EC5712A69738800C9CAE0 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3EC5702A69738800C9CAE0 /* CharacterViewModel.swift */; };
 		5C6236FE2A6EBF3800399FEA /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6236FD2A6EBF3800399FEA /* Location.swift */; };
 		5C6237002A6EC1D400399FEA /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6236FF2A6EC1D400399FEA /* Episode.swift */; };
 		5C6237032A6EC61000399FEA /* EpisodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6237022A6EC61000399FEA /* EpisodesView.swift */; };
@@ -36,7 +35,6 @@
 		5C3C514F2A5ECCB900A0E9DA /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		5C3C51522A5ED3E700A0E9DA /* RickAndMortyApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyApi.swift; sourceTree = "<group>"; };
 		5C3EC56E2A69731C00C9CAE0 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
-		5C3EC5702A69738800C9CAE0 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		5C6236FD2A6EBF3800399FEA /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5C6236FF2A6EC1D400399FEA /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		5C6237022A6EC61000399FEA /* EpisodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesView.swift; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				5C3EC56E2A69731C00C9CAE0 /* CharacterView.swift */,
-				5C3EC5702A69738800C9CAE0 /* CharacterViewModel.swift */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -248,7 +245,6 @@
 				5C3EC56F2A69731C00C9CAE0 /* CharacterView.swift in Sources */,
 				5C8244A32A715C4F00958586 /* LocationView.swift in Sources */,
 				5C6237052A6EC64F00399FEA /* EpisodesViewModel.swift in Sources */,
-				5C3EC5712A69738800C9CAE0 /* CharacterViewModel.swift in Sources */,
 				5C6236FE2A6EBF3800399FEA /* Location.swift in Sources */,
 				5C3C51502A5ECCB900A0E9DA /* Character.swift in Sources */,
 				5C6237032A6EC61000399FEA /* EpisodesView.swift in Sources */,
