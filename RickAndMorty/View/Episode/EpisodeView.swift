@@ -9,20 +9,27 @@ import SwiftUI
 
 struct EpisodeView: View {
     
-    @ObservedObject private var viewModel: EpisodeViewModel
+    private let rickAndMortyApi = RickAndMortyApi()
+    
+    private let id: Int
+    @State private var episode: Episode?
     
     init(id: Int) {
-        viewModel = EpisodeViewModel(id: id)
+        self.id = id
     }
     
     var body: some View {
         List {
-            if let episode = viewModel.episode {
+            if let episode = episode {
                 infoSection(episode)
             }
         }
-        .navigationTitle(viewModel.episode?.name ?? "Loading...")
+        .navigationTitle(episode?.name ?? "Loading...")
         .listStyle(GroupedListStyle())
+        .task {
+            let response = try! await rickAndMortyApi.getSingleEpisode(id: self.id)
+            self.episode = response
+        }
     }
     
     

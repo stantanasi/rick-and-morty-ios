@@ -9,20 +9,27 @@ import SwiftUI
 
 struct LocationView: View {
     
-    @ObservedObject private var viewModel: LocationViewModel
+    private let rickAndMortyApi = RickAndMortyApi()
+    
+    private let id: Int
+    @State private var location: Location?
     
     init(id: Int) {
-        viewModel = LocationViewModel(id: id)
+        self.id = id
     }
     
     var body: some View {
         List {
-            if let location = viewModel.location {
+            if let location = location {
                 infoSection(location)
             }
         }
-        .navigationTitle(viewModel.location?.name ?? "Loading...")
+        .navigationTitle(location?.name ?? "Loading...")
         .listStyle(GroupedListStyle())
+        .task {
+            let response = try! await rickAndMortyApi.getSingleLocation(id: self.id)
+            self.location = response
+        }
     }
     
     

@@ -9,12 +9,16 @@ import SwiftUI
 
 struct EpisodesView: View {
     
-    @ObservedObject private var viewModel = EpisodesViewModel()
+    private let rickAndMortyApi = RickAndMortyApi()
+    
+    @State private var episodes: [Episode] = []
+    @State private var currentPage = 1
+    @State private var totalPages = 0
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.episodes, id: \.id) { episode in
+                ForEach(episodes, id: \.id) { episode in
                     NavigationLink(
                         destination: EpisodeView(id: episode.id),
                         label: {
@@ -23,7 +27,7 @@ struct EpisodesView: View {
                     )
                 }
                 
-                if !viewModel.episodes.isEmpty && viewModel.currentPage < viewModel.totalPages {
+                if !episodes.isEmpty && currentPage < totalPages {
                     HStack {
                         Spacer()
                         VStack {
@@ -32,13 +36,21 @@ struct EpisodesView: View {
                         }
                         Spacer()
                     }
-                    .onAppear {
-                        viewModel.getEpisodes(page: viewModel.currentPage + 1)
+                    .task {
+                        let response = try! await rickAndMortyApi.getAllEpisodes(page: self.currentPage + 1)
+                        self.episodes.append(contentsOf: response.results)
+                        self.currentPage += 1
+                        self.totalPages = response.info.pages
                     }
                 }
             }
             .navigationTitle("Episodes")
             .listStyle(GroupedListStyle())
+            .task {
+                let response = try! await rickAndMortyApi.getAllEpisodes()
+                self.episodes = response.results
+                self.totalPages = response.info.pages
+            }
         }
     }
 }
