@@ -9,12 +9,16 @@ import SwiftUI
 
 struct LocationsView: View {
     
-    @ObservedObject private var viewModel = LocationsViewModel()
+    private let rickAndMortyApi = RickAndMortyApi()
+    
+    @State private var locations: [Location] = []
+    @State private var currentPage = 1
+    @State private var totalPages = 0
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.locations, id: \.id) { location in
+                ForEach(locations, id: \.id) { location in
                     NavigationLink(
                         destination: LocationView(id: location.id),
                         label: {
@@ -23,7 +27,7 @@ struct LocationsView: View {
                     )
                 }
                 
-                if !viewModel.locations.isEmpty && viewModel.currentPage < viewModel.totalPages {
+                if !locations.isEmpty && currentPage < totalPages {
                     HStack {
                         Spacer()
                         VStack {
@@ -32,13 +36,21 @@ struct LocationsView: View {
                         }
                         Spacer()
                     }
-                    .onAppear {
-                        viewModel.getLocations(page: viewModel.currentPage + 1)
+                    .task {
+                        let response = try! await rickAndMortyApi.getAllLocations(page: self.currentPage + 1)
+                        self.locations.append(contentsOf: response.results)
+                        self.currentPage += 1
+                        self.totalPages = response.info.pages
                     }
                 }
             }
             .navigationTitle("Locations")
             .listStyle(GroupedListStyle())
+            .task {
+                let response = try! await rickAndMortyApi.getAllLocations()
+                self.locations = response.results
+                self.totalPages = response.info.pages
+            }
         }
     }
 }
