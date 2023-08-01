@@ -9,10 +9,13 @@ import SwiftUI
 
 struct CharacterView: View {
     
-    @ObservedObject private var viewModel: CharacterViewModel
+    private let rickAndMortyApi = RickAndMortyApi()
+    
+    private var id: Int
+    @State private var character: Character?
     
     init(id: Int) {
-        viewModel = CharacterViewModel(id: id)
+        self.id = id
     }
     
     var body: some View {
@@ -22,19 +25,23 @@ struct CharacterView: View {
                 content: {
                     HStack {
                         Spacer()
-                        AsyncImage(url: URL(string: viewModel.character?.image ?? ""))
+                        AsyncImage(url: URL(string: character?.image ?? ""))
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                         Spacer()
                     }
                 }
             )
             
-            if let character = viewModel.character {
+            if let character = character {
                 infoSection(character)
             }
         }
-        .navigationTitle(viewModel.character?.name ?? "Loading...")
+        .navigationTitle(character?.name ?? "Loading...")
         .listStyle(GroupedListStyle())
+        .task {
+            let response = try! await rickAndMortyApi.getSingleCharacter(id: self.id)
+            self.character = response
+        }
     }
     
     private func infoSection(_ character: Character) -> some View {
