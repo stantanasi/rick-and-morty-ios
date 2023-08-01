@@ -11,7 +11,7 @@ struct CharacterView: View {
     
     private let rickAndMortyApi = RickAndMortyApi()
     
-    private var id: Int
+    private let id: Int
     @State private var character: Character?
     
     init(id: Int) {
